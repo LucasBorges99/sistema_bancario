@@ -52,15 +52,15 @@ Ao executar, um menu será exibido com as opções:
     [0] Sair
 
     =>
-- 1. Depositar: digite o valor (ex.: 150.50 ou 150,00 (a validação permite o uso de vírgula no input)).
+- 1 - Depositar: digite o valor (ex.: 150.50 ou 150,00 (a validação permite o uso de vírgula no input)).
 
-- 2. Sacar: solicita valor, verifica saques diários e saldo.
+- 2 - Sacar: solicita valor, verifica saques diários e saldo.
 
-- 3. Saldo: exibe saldo formatado R$ xxx.xx.
+- 3 - Saldo: exibe saldo formatado R$ xxx.xx.
 
-- 4. Extrato: mostra histórico de transações e saldo final.
+- 4 - Extrato: mostra histórico de transações e saldo final.
 
-- 0. Sair: encerra o sessão.
+- 0 - Sair: encerra o sessão.
 
 Use as setas e o ENTER para navegar.
 

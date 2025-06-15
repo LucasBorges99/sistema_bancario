@@ -33,11 +33,11 @@ Este projeto é um sistema bancário desenvolvido em Python para o terminal, cri
 
 1. Clone este repositório:
    ```bash
-   git clone https://github.com/seu-usuario/sistema-bancario-terminal.git
-   cd sistema-bancario-terminal
+   git clone https://github.com/LucasBorges99/sistema_bancario.git
+   cd sistema_bancario
 2. Execute o script no terminal:
     ```bash
-    python banco_terminal.py
+    python app.py
 ## 🎯 Modo de Uso
 
 Ao executar, um menu será exibido com as opções:

@@ -120,10 +120,10 @@ Saldo Atual: R$150.00
 
 - Fork deste repositório
 
-- Crie uma branch: git checkout -b feature/nova-funcionalidade
+- Crie uma branch: `git checkout -b feature/nova-funcionalidade`
 
-- Commit suas alterações: git commit -m "Adiciona nova feature"
+- Commit suas alterações: `git commit -m "Adiciona nova feature"`
 
-- Push na branch: git push origin feature/nova-funcionalidade
+- Push na branch: `git push origin feature/nova-funcionalidade`
 
 - Abra um Pull Request

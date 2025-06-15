@@ -1,0 +1,10 @@
+Desafio DIO - Criar um sistema simples no terminal simulando um sistema de banco
+
+- Deve ser possível depositar valores positivos
+- Todos os depósitos devem ser armazenados em uma variável e exibidos na operação extrato
+- Permitir realizar 3 saques diários com limite máximo de 500 reais por saque
+- Caso o usuário não tenha saldo, o sistema deve exibir uma mensagem informando que não será possível sacar por falta de saldo
+- Todos os saques devem ficar armazenados em uma variável e exibidos na operação extrato
+- A operação extrato deve listar todos os depósitos e saques realizados na conta
+- No fim da listagem deve ser exibido o saldo atual da conta (plus: colocar o saldo após cada operação)´
+- Os valores devem ser exibidos em formato "R$ xxx.xx"

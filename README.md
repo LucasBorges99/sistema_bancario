@@ -1,129 +1,166 @@
-# Sistema Bancário Simples (Terminal)
-
-Este projeto é um sistema bancário desenvolvido em Python para o terminal, criado como desafio do Bootcamp Backend Python da DIO.me. O objetivo é permitir que o usuário realize operações bancárias básicas (depósito, saque, consulta de saldo e extrato), respeitando regras definidas.
-
----
-
-## 📋 Funcionalidades
-
-- 💰 **Depósito**: aceitar apenas valores positivos e registrar cada operação.
-- 🏧 **Saque**: até 3 saques diários, com limite máximo de R$500,00 por saque.
-- 📄 **Extrato**: lista completa de depósitos e saques, com valor e saldo após cada operação.
-- 💳 **Saldo**: consulta rápida do saldo atual.
-- 🔍 **Validações de input**: somente números decimais válidos.
-
----
-
-## 🚀 Tecnologias e Requisitos
-
-- Python 3.7 ou superior
-- Sistema operacional: Windows, macOS ou Linux
-- Biblioteca padrão do Python (sem dependências externas)
-
----
-
-## 📂 Estrutura do Projeto
-└── app.py     # Arquivo principal
-
-> **Observação**: todo o código está contido em um único arquivo para simplicidade do desafio.
-
----
-
-## 🛠️ Como Executar
-
-1. Clone este repositório:
+# Sistema Bancário em Python (POO)
+Este projeto implementa um sistema bancário completo utilizando Programação Orientada a Objetos (POO) em Python. O sistema oferece funcionalidades para gerenciar clientes, contas correntes e transações financeiras através de uma interface de terminal intuitiva.
+## Funcionalidades Principais
+### Gestão de Clientes
+- **Criação de usuários**: Cadastro de pessoas físicas com nome, CPF, data de nascimento e endereço
+- **Listagem de clientes**: Visualização de todos os clientes cadastrados no sistema
+- **Validação de CPF**: Verificação de formato e duplicidade
+### Gestão de Contas
+- **Criação de contas**: Vinculação de contas correntes a clientes existentes
+- **Listagem de contas**: Visualização de todas as contas cadastradas com detalhes
+- **Seleção de contas**: Interface para escolher entre múltiplas contas de um cliente
+### Operações Bancárias
+- **Depósitos**: Adição de fundos à conta corrente
+- **Saques**: Retirada de fundos com limites configuráveis
+- **Consulta de saldo**: Visualização do saldo atual
+- **Extrato bancário**: Histórico completo de transações com data/hora
+## Estrutura do Projeto
+### Classes Principais
+| Classe           | Descrição                                                                 |
+|------------------|---------------------------------------------------------------------------|
+| `Cliente`        | Classe base para clientes do banco                                        |
+| `PessoaFisica`   | Implementação específica para clientes pessoa física (herda de `Cliente`) |
+| `Conta`          | Classe base para contas bancárias                                         |
+| `ContaCorrente`  | Implementação de conta corrente com limites específicos (herda de `Conta`)|
+| `Historico`      | Registro de todas as transações realizadas em uma conta                   |
+| `Transacao`      | Classe abstrata base para transações                                      |
+| `Saque`          | Implementação específica de transação de saque (herda de `Transacao`)     |
+| `Deposito`       | Implementação específica de transação de depósito (herda de `Transacao`)  |
+### Funções de Interface
+| Função                      | Descrição                                       |
+|-----------------------------|-------------------------------------------------|
+| `tela_inicio()`             | Exibe o menu principal do sistema               |
+| `tela_usuario()`            | Menu de gerenciamento de usuários               |
+| `tela_conta()`              | Menu de gerenciamento de contas                 |
+| `tela_sessao()`             | Menu de operações bancárias                     |
+| `tela_selecao_clientes()`   | Interface para seleção de clientes              |
+| `tela_selecao_contas()`     | Interface para seleção de contas                |
+### Funções Operacionais
+| Função                      | Descrição                                       |
+|-----------------------------|-------------------------------------------------|
+| `filtrar_cliente()`         | Localiza cliente por CPF                        |
+| `listar_clientes()`         | Retorna lista formatada de clientes             |
+| `selecionar_clientes()`     | Processa seleção de cliente na interface        |
+| `selecionar_conta()`        | Processa seleção de conta na interface          |
+| `recuperar_conta_cliente()` | Obtém conta associada a um cliente              |
+| `depositar()`               | Executa operação de depósito                    |
+| `sacar()`                   | Executa operação de saque                       |
+| `exibir_extrato()`          | Mostra histórico de transações e saldo          |
+| `criar_cliente()`           | Cadastra novo cliente no sistema                |
+| `criar_conta()`             | Cria nova conta corrente                        |
+| `listar_contas()`           | Exibe todas as contas cadastradas               |
+| `exibir_saldo()`            | Mostra saldo atual da conta                     |
+| `validar_valor()`           | Valida valores monetários informados            |
+| `valida_cpf()`              | Valida formato e duplicidade de CPF             |
+## Pré-requisitos
+- Python 3.x instalado
+- Nenhuma dependência externa necessária
+## Como Executar
+1. Salve o código em um arquivo com extensão `.py` (ex: `sistema_bancario.py`)
+2. Execute o comando no terminal:
    ```bash
-   git clone https://github.com/LucasBorges99/sistema_bancario.git
-   cd sistema_bancario
-2. Execute o script no terminal:
-    ```bash
-    python app.py
-## 🎯 Modo de Uso
-
-Ao executar, um menu será exibido com as opções:
-´´´bash
-    *** Sistema Bancário ***
-
-    Selecione a opção desejada:
-    [1] Depositar
-    [2] Sacar
-    [3] Saldo
-    [4] Extrato
-    [0] Sair
-
-    =>
-- 1 - Depositar: digite o valor (ex.: 150.50 ou 150,00 (a validação permite o uso de vírgula no input)).
-
-- 2 - Sacar: solicita valor, verifica saques diários e saldo.
-
-- 3 - Saldo: exibe saldo formatado R$ xxx.xx.
-
-- 4 - Extrato: mostra histórico de transações e saldo final.
-
-- 0 - Sair: encerra o sessão.
-
-Use as setas e o ENTER para navegar.
-
-## ⚙️ Detalhamento das Funções
-
-| Função | Descrição |
-|--------|-----------|
-| `validar_input(valor: str)` | Verifica se a string é um valor decimal válido. Aceita `.` e `,` como separadores.
-| `valida_saques_diarios(saques)` | Garante até 3 saques por dia. Retorna `True` se ainda houver saques disponíveis. |
-| `valida_limite_maximo_diario(valor, limite)` | Confere se o valor do saque está entre 0 e o limite diário (R$500,00). |
-| `valida_saldo(saldo, valor)` | Confere se o saldo é suficiente para o saque. |
-| `depositar(valor, saldo, lancamento)` | Realiza depósito: atualiza saldo, numera lançamento e registra mensagem no extrato. |
-| `sacar(valor, saldo, lancamento, saques)` | Executa saque: reduz saldo, incrementa contador de saques e registra histórico. |
-| `aperte_para_continuar()` | Exibe uma linha separadora e pausa até o ENTER, para fluxo mais amigável. |
-
-> **Observação:** Todas as operações armazenam mensagens em extrato, incluindo o saldo após a transação.
-
-## 📈 Exemplo de Uso
-```=> [1] Depositar  
-Digite o valor que deseja depositar...  
-=> 200,00  
-001 - Deposito realizado no valor de: R$200.00  
--> Saldo após transação: R$200.00
-
-=> [2] Sacar  
-Digite o valor que deseja sacar...  
-=> 50  
-002 - Saque realizado no valor de: R$50.00  
--> Saldo após transação: R$150.00  
-Saques disponíveis: 2
-
-=> [4] Extrato
-------------------------------------------------------------
-                       Extrato Bancário                       
-------------------------------------------------------------
-001 - Deposito realizado no valor de: R$200.00
--> Saldo após transação: R$200.00
-------------------------------------------------------------
-002 - Saque realizado no valor de: R$50.00
--> Saldo após transação: R$150.00
-------------------------------------------------------------
-Saldo Atual: R$150.00
+   python app.py
+   ```
+## Fluxo de Uso
+### 1. Menu Principal
 ```
-## 📚 Boas Práticas Aplicadas
-
-- Validações de entrada para evitar erros de tipo.
-
-- Mensagens claras e formatação consistente.
-
-- Uso de match-case (Python 3.10+) para clareza no menu.
-
-- Separação de responsabilidades em funções.
-
-## 🤝 Contribuições
-
-- Contribuições são bem-vindas! Siga estas etapas:
-
-- Fork deste repositório
-
-- Crie uma branch: `git checkout -b feature/nova-funcionalidade`
-
-- Commit suas alterações: `git commit -m "Adiciona nova feature"`
-
-- Push na branch: `git push origin feature/nova-funcionalidade`
-
-- Abra um Pull Request
+*** Sistema Bancário ***
+Selecione a opção desejada:
+[1] Iniciar Sessão
+[2] Usuários
+[3] Contas
+[0] Sair
+=>
+```
+### 2. Menu de Usuários
+```
+*** Sistema Bancário ***
+Selecione a opção desejada:
+[1] Criar Usuário
+[2] Listar Usuários
+[9] Voltar
+[0] Sair
+=>
+```
+### 3. Menu de Contas
+```
+*** Sistema Bancário ***
+Selecione a opção desejada:
+[1] Criar Conta
+[2] Listar Contas
+[9] Voltar
+[0] Sair
+=>
+```
+### 4. Menu de Operações Bancárias
+```
+*** Sistema Bancário ***
+Selecione a opção desejada:
+[1] Depositar
+[2] Sacar
+[3] Saldo
+[4] Extrato
+[9] Voltar
+[0] Sair
+=>
+```
+## Regras de Negócio
+- **Limites de Saque**:
+  - Máximo de 3 saques por dia
+  - Limite de R$ 500,00 por saque
+- **Formato de CPF**:
+  - Aceita 11 dígitos (com ou sem pontuação)
+  - Verifica duplicidade
+- **Formato de Valores**:
+  - Aceita valores com ponto ou vírgula como separador decimal
+- **Histórico de Transações**:
+  - Registra data e hora exata de cada operação
+  - Mantém registro permanente durante a sessão
+## Exemplos de Operações
+### Criação de Cliente
+```
+Informe o CPF (somente número): 12345678901
+Informe o nome completo: João Silva
+Informe a data de nascimento (dd-mm-aaaa): 15-05-1990
+Informe o endereço (logradouro, nro - bairro - cidade/sigla estado): Rua ABC, 123 - Centro - São Paulo/SP
+=== Cliente criado com sucesso! ===
+```
+### Operação de Depósito
+```
+*** Sistema Bancário ***
+Selecione a opção desejada:
+[1] Depositar
+[2] Sacar
+[3] Saldo
+[4] Extrato
+[9] Voltar
+[0] Sair
+=>1
+Informe o valor do depósito: 350.50
+||| Depósito realizado com sucesso! |||
+------------------------------------------------------------
+Aperte ENTER para continuar
+```
+### Extrato Bancário
+```
+================ EXTRATO ================
+Deposito:
+	R$ 350.50
+Saque:
+	R$ 100.00
+Saldo:
+	R$ 250.50
+==========================================
+```
+## Melhorias Futuras
+1. Implementar persistência de dados em arquivo
+2. Adicionar sistema de autenticação com senha
+3. Implementar operações de transferência entre contas
+4. Adicionar diferentes tipos de conta (poupança, investimento)
+5. Implementar sistema de tarifas e taxas
+6. Desenvolver interface web ou gráfica
+## Observações
+- O sistema utiliza `os.system("cls")` para limpar o terminal, o que é compatível com Windows
+- Para sistemas Linux/macOS, substitua por `os.system("clear")` se necessário
+- Todos os dados são armazenados em memória durante a execução do programa
+Este projeto demonstra os princípios de Programação Orientada a Objetos aplicados a um sistema bancário real, com separação clara de responsabilidades entre classes e implementação de regras de negócio específicas.
